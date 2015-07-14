@@ -1,0 +1,55 @@
+#header li {
+	display: inline;
+	border: solid;
+	border-width: 1px 1px 0 1px;
+	margin: 0 0.5em 0 0;
+}
+
+#right {
+	float: right;
+}
+
+#left {
+	float: left;
+}
+
+#btn {
+	background-color: green;
+	height: 20px;
+	width: 110px;
+	padding: 1%;
+	position: absolute;
+	left: 15%;
+	border-radius: 2px;
+	color: white;
+	font-family: sans-serif;
+}
+
+.textformat {
+	font-family: sans-serif;
+	color: grey;
+}
+.blue {
+	color: cornflowerblue;
+}
+.box {
+	display: inline-block;
+	padding: 2%;
+	background-color: white;
+	border-radius: 10px;
+	border: 2px solid grey;
+	width: 40%;
+	overflow: auto;
+}
+.matter {
+	position: absolute;
+	right: 10%;
+	left: 10%;
+	background-color: cornflowerblue;
+	overflow: auto;
+	width: 80%;
+	/*display: inline-block;
+	padding: 2%;
+	border-radius: 10px;
+	border: 2px solid grey;*/
+}
