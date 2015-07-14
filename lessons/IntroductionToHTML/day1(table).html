@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>First Form</title>
+</head>
+<body>
+	<div>
+		<form id="frm">
+			<h2 align="center">Registration Form</h2>
+			<fieldset>
+				<legend>Personal Info</legend>
+			<table>
+				<tr>
+					<td><b>First Name:</b></td> 
+					<td><input type="text"/></td>
+				</tr>
+				<tr>
+					<td><b>Last Name:</b></td> 
+					<td><input type="text"/></td>
+				</tr>
+				<tr>
+					<td><b>Date of Birth:</b></td> 
+					<td><input type="date" max="1997-01-01"></td>
+				</tr>
+				<tr>
+					<td><b>Sex:</b></td> 
+					<td>
+						Male <input type="radio" name="sex">
+						Female <input type="radio" name="sex">
+					</td>
+				</tr>
+				<tr>
+					<td><b>Address:</b></td> 
+					<td><textarea form="frm"></textarea></td>
+				</tr>
+			</table>
+			</fieldset>
+			<fieldset>
+				<legend>Login Info</legend>
+				<table>
+					<tr>
+						<td><b>E-Mail:</b></td> 
+						<td><input type="email" required></td>
+					</tr>
+					<tr>
+						<td><b>Password:</b></td> 
+						<td><input type="password" required></td>
+					</tr>
+					<tr>
+						<td><i>Subscribe for:</i></td> 
+						<td>
+							<select>
+								<option>Don't Subscribe</option>
+								<option>JavaScript</option>
+								<option>CSS</option>
+								<option>HTML5</option>
+							</select>
+						</td>
+						<td><i>Subscribe to:</i></td> 
+						<td>
+							Weekly Newsletter <input type="checkbox" name="subscribe">
+							Monthly Newsletter <input type="checkbox" name="subscribe">
+						</td>
+					</tr>
+					<tr><td><input type="submit"></td></tr>
+				</table>
+			</fieldset>
+		</form>
+	</div>
+</body>
+</html>
