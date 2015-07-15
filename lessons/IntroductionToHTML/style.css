@@ -14,15 +14,18 @@
 }
 
 #btn {
-	background-color: green;
+	background-color: #29A629;
 	height: 20px;
-	width: 110px;
+	width: 15%;
 	padding: 1%;
 	position: absolute;
-	left: 15%;
+	left: 21%;
 	border-radius: 2px;
 	color: white;
 	font-family: sans-serif;
+	font-size: 13px;
+	font-style: bold;
+	text-align: center;
 }
 
 .textformat {
@@ -30,26 +33,59 @@
 	color: grey;
 }
 .blue {
-	color: cornflowerblue;
+	color: #2588eb;
 }
 .box {
 	display: inline-block;
 	padding: 2%;
 	background-color: white;
-	border-radius: 10px;
-	border: 2px solid grey;
-	width: 40%;
+	border-radius: 8px;
+	border: 2px solid #C1D4E6;
+	/*width: 40%;*/
 	overflow: auto;
+	text-align: justify;
+	line-height: 1.5;
+	letter-spacing: 2pt;
 }
 .matter {
 	position: absolute;
 	right: 10%;
 	left: 10%;
-	background-color: cornflowerblue;
+	background-color: #D6EBFF;
 	overflow: auto;
-	width: 80%;
-	/*display: inline-block;
-	padding: 2%;
-	border-radius: 10px;
-	border: 2px solid grey;*/
+	width: 70%;
+	margin-top: 10%;
+}
+body {
+	margin:0px;
+	padding:0px;
+}
+.tab{
+	width:100px;
+	background:#FFFFFF;
+	font-size:14px;
+	font-style: bold;
+	padding:5px;
+	float:left;
+	border:1px solid #dddddd;
+	cursor:pointer;
+	margin-right:4px;
+	border-radius:3px;
+	text-align: center;
+	margin-top: 8%;
+	z-index: -1;
+}
+.left{
+	margin-left:12%;
+}
+.current{
+	background: #D6EBFF;
+	color: #002081;
+}
+#tab2 {
+	display: none;
+}
+img {
+	margin-top: 0;
+	margin-bottom: 0;
 }
