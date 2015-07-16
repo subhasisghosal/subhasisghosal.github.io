@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<!--<script type="text/javascript" src="jquery-1.11.3.min.js"></script>-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<title>Latest News</title>
+</head>
+<body>
+	<div class="tab_area">
+		
+		<div class="textformat tab left current" id="tab_1" onclick="clickMe(this.id)">News</div>
+        <div class="textformat tab" id="tab_2" onclick="clickMe(this.id)">Subscribe</div>
+        
+        <div id="tab1" class="tab_content matter box">
+        	<span id="left" class="box">
+			<div>
+				<h2 class="textformat">Welcome</h2>
+				<p class="textformat">Simple and effective AngularJS bindings for <br/>FusionCharts JavaScript Charting Library. Simple <br/>and effective AngularJS bindings for FusionCharts <br/>JavaScript Charting Library</p>
+				<p class="textformat blue">AngularJS bindings for FusionCharts JavaScript <br/>Charting Library</p>
+			</div>
+			<div class="btn">LEARN MORE</div>
+		</span>
+		<span id="right" class="box">
+			<h2 class="textformat">Latest News</h2>
+			<img src="image.jpg">
+		</span>
+        </div>
+        
+        <div id="tab2" class="tab_content matter box">
+        	<div class="box">	
+        		<form enctype='application/json' id='sub_form'>
+        		<div>
+        			<span id="left">
+        				<h2 class="textformat">Subscription Form</h2>
+        				<table>
+        					<tr>
+        						<td>Name</td>
+        						<td><input id="name" type="text" name="name"/></td>
+        					</tr>
+	        				<tr>
+	        					<td>Email</td>
+	        					<td><input id="email" type="text" name="email"/></td>
+	        				</tr>
+	        				<tr>
+	        					<td>Sex</td>
+	        					<td><input id="male" type="radio" value="male" name="sex"> Male
+								<input id="female" type="radio" value="female" name="sex"> Female</td>
+							</tr>
+							<tr>
+								<td>Interest</td>
+								<td><input id="football" type="checkbox" name="interest" value="football"> Football
+								<input id="movie" type="checkbox" name="interest" value="movie"> Movie
+								<input id="reading" type="checkbox" name="interest" value="reading"> Reading</td>
+							</tr>
+						</table>
+        			</span>
+        			<span id="right">
+        				<table>
+	        				<tr>
+	        					<td>Country</td>
+	        					<td><select id="country" name="country">
+		        					<option></option>
+		        					<option value="england">England</option>
+		        					<option value="india">India</option>
+		        					<option value="japan">Japan</option>
+		        					<option value="usa">USA</option>
+		        				</select></td>
+	        				</tr>
+	        				<tr>
+	        					<td>Address</td>
+	        					<td><input id="address" type="text" name="address" rows="6"/></td>
+	        				</tr>
+        				</table>
+        			</span>
+        		</div>
+        		</form>
+        	</div>
+        	<!--<button type="reset" id="reset" class="btn">-->
+        	<div id="reset" class="btn" onclick="clearform()">RESET</div>
+        	<div id="subscribe" class="btn" onclick="submit()">SUBSCRIBE</div>
+        </div>        
+    </div>
+    <script type="text/javascript" src="script.js"></script>
+</body>
+</html>
