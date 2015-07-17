@@ -14,6 +14,7 @@ function clickMe(id){
 		t2.style.color="#002081";
 		t1.style.background="white";
 		t1.style.color="grey";
+		t2.style.zindex="5";
 	}
 	if(id==="tab_1"){
 		el2.style.display="none";
@@ -22,6 +23,7 @@ function clickMe(id){
 		t1.style.color="#002081";
 		t2.style.background="white";
 		t2.style.color="grey";
+		t1.style.zindex="5";
 	}
 }
 
@@ -51,3 +53,54 @@ function submit(){
 function clearform(){
 	find('sub_form').reset();
 }	
+
+function overlay(id) {
+	switch(id){
+		case "football": el = find("overlay1");
+			break;
+		case "movie": el = find("overlay2");
+			break;
+		case "reading": el = find("overlay3");
+			break;
+	}
+	el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
+}
+
+function back() {
+	document.getElementById("overlay1").style.visibility = "hidden";
+	document.getElementById("overlay2").style.visibility = "hidden";
+	document.getElementById("overlay3").style.visibility = "hidden";
+}
+
+function selectState(val){
+	switch(val){
+		case "india": var state = ["UP","WB","Bihar","Orissa","Assam"];
+			break;
+		case "usa": var state = ["Texas","California","Ohio","Alabama","Utah"];
+			break;
+		case "england": var state = ["Manchester","Wales"];
+			break;
+	}
+	for (var i = 0; i < state.length; i++) {
+		var option = document.createElement("option");
+		option.value = state[i];
+		option.label = state[i];
+		var select = find("state");
+		select.appendChild(option);
+	};	
+}
+
+function validatePh(val){
+	//alert(typeof(parseInt(val))+" "+parseInt(val));
+	//if(typeof(val)!=='number')
+	//	alert(val);
+	var digit = parseInt(val.slice(val.length-1));
+	if(isNaN(digit))
+		alert("Please enter digits");
+}
+
+function validPh(n){
+	var format = /^\((?([7-9]{1})?([0-9]{9}))$/;
+	if(!n.match(format))
+		alert("wrong");
+}
