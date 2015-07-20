@@ -29,7 +29,7 @@ function subtractions(){
 		sum+="<div class='sum' id='d"+i+"'>";
 		sum+="<div>"+sortedList[j]+"</div>";
 		sum+="<div>-"+sortedList[j+1]+"</div>";
-		sum+="<div class='answer'><input id='"+i+"' type='text' onkeyup='validate(this.id)'/></div></div>"
+		sum+="<div class='answer'><input id='"+i+"' type='text' onkeypress='return isNum(event)' onkeyup='validate(this.id)'/></div></div>"
 		ans.push(parseInt(sortedList[j])-parseInt(sortedList[j+1]));
 	};
 	document.getElementById("content").innerHTML = sum;
@@ -43,21 +43,23 @@ function additions(){
 		sum+="<div class='sum' id='d"+i+"'>";
 		sum+="<div>"+list[j]+"</div>";
 		sum+="<div>+"+list[j+1]+"</div>";
-		sum+="<div class='answer'><input id='"+i+"' type='text' onkeyup='validate(this.id)'/></div></div>"
+		sum+="<div class='answer'><input id='"+i+"' type='text' onkeypress='return isNum(event)' onkeyup='validate(this.id)'/></div></div>"
 		ans.push(parseInt(list[j])+parseInt(list[j+1]));
 	};
 	document.getElementById("content").innerHTML = sum;
 }
 
 function validate(id){
-	document.getElementById(id).onkeydown = function(e) {
-	    var key = e.keyCode ? e.keyCode : e.which;
-	    if ( isNaN( String.fromCharCode(key) ) ) return false;
-	}
 	var box = document.getElementById(id);
 	box.selectionStart = box.selectionEnd = 0;
 	if(parseInt(box.value) === ans[id])
 		box.style.background = "#7BFF6F";
 	else
 		box.style.background = "#FF5050";
+}
+
+function isNum(e){
+	var key = e.which ? e.which : e.keyCode;
+	if(key>31 && (key<48 || key>57))
+		return false;
 }
