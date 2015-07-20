@@ -32,8 +32,7 @@ function subtractions(){
 		sum+="<div class='answer'><input id='"+i+"' type='text' onkeyup='validate(this.id)'/></div></div>"
 		ans.push(parseInt(sortedList[j])-parseInt(sortedList[j+1]));
 	};
-	document.getElementById("a").innerHTML = sum;
-	//document.getElementById("b").innerHTML = ans;
+	document.getElementById("content").innerHTML = sum;
 }
 
 function additions(){
@@ -47,12 +46,16 @@ function additions(){
 		sum+="<div class='answer'><input id='"+i+"' type='text' onkeyup='validate(this.id)'/></div></div>"
 		ans.push(parseInt(list[j])+parseInt(list[j+1]));
 	};
-	document.getElementById("a").innerHTML = sum;
-	//document.getElementById("b").innerHTML = ans;
+	document.getElementById("content").innerHTML = sum;
 }
 
 function validate(id){
+	document.getElementById(id).onkeydown = function(e) {
+	    var key = e.keyCode ? e.keyCode : e.which;
+	    if ( isNaN( String.fromCharCode(key) ) ) return false;
+	}
 	var box = document.getElementById(id);
+	box.selectionStart = box.selectionEnd = 0;
 	if(parseInt(box.value) === ans[id])
 		box.style.background = "#7BFF6F";
 	else
