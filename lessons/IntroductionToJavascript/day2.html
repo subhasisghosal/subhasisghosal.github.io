@@ -1,0 +1,64 @@
+<html>
+	<head>
+		<style type="text/css">
+			table {
+				margin: 100px;
+				float: left;
+				border: 1px solid black;
+			}
+			td {
+				border: 1px solid black;
+				text-align: center;
+				width: 50px;
+				height: 50px;
+				cursor: pointer;
+			}
+			input {
+				height: inherit;
+				width: auto;
+				text-align: right;
+				font-size: 24px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="content">
+			<table>
+				<tr><td colspan="6"><input id="screen" type="text" disabled/></td></tr>
+				<tr>
+					<td onclick="putValue(7)">7</td>
+					<td onclick="putValue(8)">8</td>
+					<td onclick="putValue(9)">9</td>
+					<td onclick="putValue('-')">-</td>
+					<td onclick="putValue('%')">mod</td>
+					<td onclick="evalue()">=</td>
+				</tr>
+				<tr>
+					<td onclick="putValue(4)">4</td>
+					<td onclick="putValue(5)">5</td>
+					<td onclick="putValue(6)">6</td>
+					<td onclick="putValue('+')">+</td>
+					<td onclick="allClear(1)">C</td>
+					<td onclick="allClear(0)">AC</td>
+				</tr>
+				<tr>
+					<td onclick="putValue(1)">1</td>
+					<td onclick="putValue(2)">2</td>
+					<td onclick="putValue(3)">3</td>
+					<td onclick="putValue('*')">*</td>
+					<td onclick="putValue(MR)">MR</td>
+					<td onclick="putValue(MC)">MC</td>
+				</tr>
+				<tr>
+					<td onclick="putValue('.')">.</td>
+					<td onclick="putValue(0)">0</td>
+					<td  >%</td>
+					<td onclick="putValue('/')">/</td>
+					<td onclick="putValue(M+)">M+</td>
+					<td onclick="putValue(M-)">M-</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+	<script type="text/javascript" src="calculator.js"></script>
+</html>
