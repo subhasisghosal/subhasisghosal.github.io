@@ -37,18 +37,26 @@ function percent(){
 		p = op.value;
 	}
 	else{
-		for (var i = 0; p.length < 2; i++) {
+		var l;
+		switch(op.value.length){
+			case 2: l = 2;
+			break;
+			case 3: l = 3;
+			break;
+			case 4: l = 4;
+			break;
+			case 5: l = 5;
+			break;
+		}
+		for (var i = 0; p.length < l; i++) {
 				a = op.value.substring(op.value.length-i-1,op.value.length-i);
-				if (a>=0 && a<=9)
+				if ((a>=0 && a<=9) || a=='.')
 					p = a + p;
 				else
 					break;
-				console.log(a);
 		}
 	}
-	alert(p+"%");
-	p = parseInt(p)/100;
-	console.log(p);
-	allClear(2);
+	p = parseFloat(p)/100;
+	allClear(0);
 	op.value += p;
 }
