@@ -2,6 +2,8 @@
 	<head>
 		<style type="text/css">
 			table {
+				/*height: 40%;
+				width : 40%;*/
 				margin: 100px;
 				float: left;
 				border: 1px solid black;
@@ -46,16 +48,16 @@
 					<td onclick="putValue(2)">2</td>
 					<td onclick="putValue(3)">3</td>
 					<td onclick="putValue('*')">*</td>
-					<td onclick="putValue(MR)">MR</td>
-					<td onclick="putValue(MC)">MC</td>
+					<td onclick="mem('r')">MR</td>
+					<td onclick="mem('c')">MC</td>
 				</tr>
 				<tr>
 					<td onclick="putValue('.')">.</td>
 					<td onclick="putValue(0)">0</td>
-					<td  >%</td>
+					<td onclick="percent()">%</td>
 					<td onclick="putValue('/')">/</td>
-					<td onclick="putValue(M+)">M+</td>
-					<td onclick="putValue(M-)">M-</td>
+					<td onclick="mem('+')">M+</td>
+					<td onclick="mem('-')">M-</td>
 				</tr>
 			</table>
 		</div>
