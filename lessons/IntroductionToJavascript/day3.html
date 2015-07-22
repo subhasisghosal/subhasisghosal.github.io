@@ -1,0 +1,42 @@
+<html>
+	<head>
+		<style type="text/css">
+			#content{
+				margin: 200px;
+			}
+			div{
+				visibility: hidden;
+			}
+			input[type='number']{
+				width: 50px;
+			}
+			button{
+				margin: 20px;
+			}
+			label{
+				border: 2px solid #eeeeee;
+				padding: 2px;
+			}
+		</style>
+	</head>
+	<body>
+		<button onclick="change(1)">Date/Time Difference</button>
+		<button onclick="change(2)">Date/Time Interval</button>
+		<div id="content">
+			<div id="diff">
+				From: <input id="start" type="datetime-local" required/>
+				To: <input id="end" type="datetime-local" required/>
+				<label id="result">Difference</label>
+				<button onclick="diff()">Find Difference</button>
+			</div>
+			<div id="inter">
+				Date-Time: <input id="dt" type="datetime-local" required/>
+				Interval Days: <input id="day" value="0" min="0" type="number"/>
+				Hours: <input id="hour" value="0" min="0" max="23" type="number"/>
+				<label id="next">Date/Time</label>
+				<button onclick="inter()">Find Date/Time</button>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="dateCalculator.js"></script>
+</html>
