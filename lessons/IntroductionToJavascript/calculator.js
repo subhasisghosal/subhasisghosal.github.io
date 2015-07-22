@@ -1,6 +1,6 @@
 var op = document.getElementById("screen");
 
-var var1, var2, result, memory=0;
+var memory=0;
 
 function putValue(val){
 	op.selectionStart = op.selectionEnd = 0;
@@ -17,15 +17,16 @@ function evalue(){
 
 function mem(v){
 	switch(v){
-		case '+': memory += op.value;
+		case '+': memory += parseFloat(op.value);
 				op.value = "";
 		break;
-		case '-': memory -= op.value;
+		case '-': memory -= parseFloat(op.value);
 				op.value = "";
 		break;
 		case 'r': op.value += memory;
 		break;
-		case 'c': memory = 0;
+		case 'c': memory = "";
+			alert("Memory Cleared");
 		break;
 	}
 }
