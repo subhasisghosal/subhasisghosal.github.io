@@ -29,3 +29,14 @@ function calculateTime(){
 	n = (Math.log(e)-Math.log(e-p*r))/Math.log(1+r);
 	find("mnth").value = Math.round(n);
 }
+function calculate(){
+	if (find("amt").value==="") {
+		calculatePrincipal();
+	}
+	else if (find("mnth").value==="") {
+		calculateTime();
+	}
+	else if (find("emi").value==="") {
+		calculateEMI();
+	}
+}
