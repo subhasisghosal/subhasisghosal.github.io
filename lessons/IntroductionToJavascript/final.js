@@ -2,42 +2,42 @@
 	function find(id){
 		return document.getElementById(id);
 	}
-	
-	var labels = ["Basic Calculator", "Date/Time Calculator", "EMI Calculator"];
-	var d = document.createElement("div");
-	d.id = "content";
-	document.body.appendChild(d);
-	d.style.margin = "50px";
-	for (var i = 1; i < 4; i++) {
-		var r = document.createElement("input");
-		r.id = "r"+i;
-		r.type = "radio";
-		r.name = "type";		
-		d.appendChild(r);
-		var l = document.createElement("label");
-		l.id = "l"+i;
-		l.for = "r"+i;
-		l.innerHTML = labels[i-1];
-		d.appendChild(l);
-	};
-	r1.addEventListener("click", basicCalculator);
-	r2.addEventListener("click", dateCalculator);
-	r3.addEventListener("click", emiCalculator);
 
+	function create(elementName,parent,attrList,styleList,eventList){
+		var el = document.createElement(elementName);
+		for (var i in attrList) {
+			console.log(i,attrList[i]);
+			el[i] = attrList[i];
+		}
+		for (var j in styleList) {
+			console.log("Style",j,styleList[j]);
+			el.style[j] = styleList[j];
+		}
+		for (var k in eventList) {
+			console.log("Event",k,eventList[k]);
+			el.addEventListener(k, eventList[k]);
+		}
+		parent.appendChild(el);
+		return el;
+	}
+
+	(function createBody(){
+		var labels = ["Basic Calculator", "Date/Time Calculator", "EMI Calculator"];
+		var events = [basicCalculator,dateCalculator,emiCalculator];
+		create("div",document.body,{"id":"content"},{"margin":"50px"});
+		for (var i = 1; i < 4; i++) {
+			create("input",content,{"id":"r"+i, "type":"radio", "name":"type"},{},{"click": events[i-1]});
+			create("label",content,{"id":"l"+i, "for":"r"+i, "innerHTML":labels[i-1]});
+		};
+	})();
+	
 	function basicCalculator(){
 		var buttons = [["7","8","9","-","mod","="],["4","5","6","+","C","AC"],["1","2","3","*","MR","MC"],[".","0","%","/","M+","M-"]];
-		var d1 = document.createElement("div");
-		d1.id = "calculator";
-		document.body.appendChild(d1);
-		var t = document.createElement("table");
-		d1.appendChild(t);
+		create("div",document.body,{id:"calculator"});
+		var t = create("table",calculator);
 		var head = t.insertRow(0).insertCell(0);
 		head.setAttribute("colspan","6");
-		var scrn = document.createElement("input");
-		scrn.id = "screen";
-		scrn.type = "text";
-		scrn.setAttribute("disabled","disabled");
-		head.appendChild(scrn);
+		create("input",head,{id:"screen",type:"text",disabled:"disabled"});
 		for (var i = 1; i < 5; i++) {
 			var row = t.insertRow(i);
 			for (var j = 0; j < 6; j++) {
@@ -55,9 +55,9 @@
 			b.id = "b"+i;
 			b.type = "button";
 			b.value = switcher[i-1];
-			b.setAttribute("onclick", "change("+i+")");
-			
+			b.setAttribute("onclick", "change("+i+")");	
 			document.body.appendChild(b);
+			create();
 		};
 		//b1.addEventListener("click",change(),true);
 		//b1.setAttribute("onclick", "change()");

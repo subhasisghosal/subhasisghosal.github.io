@@ -8,6 +8,11 @@ function reflect1(id){
 function reflect2(id){
 	find("mnth").value = find(id).value;
 }
+function isNum(e){
+	var key = e.which ? e.which : e.keyCode;
+	if(key>31 && (key<48 || key>57))
+		return false;
+}
 function calculateEMI(){
 	p = parseInt(find("amt").value);
 	n = parseInt(find("mnth").value);
