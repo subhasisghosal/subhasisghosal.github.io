@@ -29,22 +29,20 @@
 		for (var i = 1; i < 4; i++) {
 			create("input",selector,{"id":"r"+i, "type":"radio", "name":"type"},{},{"click": events[i-1]});
 			create("label",selector,{"id":"l"+i, "for":"r"+i, "innerHTML":labels[i-1]});
-		};
+		}
 		create("div",document.body,{"id":"content"});
 	})();
 
 	function basicCalculator(){
-		var op = document.getElementById("screen");
-
+		var op = find("screen");
 		var memory=0;
-
 		function putValue(val){
 			op.selectionStart = op.selectionEnd = 0;
 			op.value += val;
 		}
 
 		function allClear(v){
-			op.value = (v==0) ? "" : op.value.slice(0,-v);
+			op.value = (v===0) ? "" : op.value.slice(0,-v);
 		}
 
 		function evalue(){
@@ -104,9 +102,9 @@
 			var head = t.insertRow(0).insertCell(0);
 			head.setAttribute("colspan","6");
 			create("input",head,{id:"screen",type:"text",disabled:"disabled"},{height:"inherit", width:"auto", "text-align":"right", "font-size":"24px"});
-			for (var i = 1; i < 5; i++) {
+			for (let i = 1; i < 5; i++) {
 				var row = t.insertRow(i);
-				for (var j = 0; j < 6; j++) {
+				for (let j = 0; j < 6; j++) {
 					var cell = row.insertCell(j);
 					cell.innerHTML = buttons[i-1][j];
 					cell.align = "center";
@@ -117,13 +115,14 @@
 					cell.style.background = "#ffffec";
 					cell.style.font = "20px";
 					if(j<4)
-						cell.setAttribute("onclick","putValue('"+buttons[i-1][j]+"')");
+						//cell.setAttribute("onclick","putValue('"+buttons[i-1][j]+"')");
+						cell.addEventListener("onclick", function(){putValue(buttons[i-1][j]);});
 					else if(j>3 && i>2)
 						cell.setAttribute("onclick","mem()");
 					else if(j>3 && i===2)
 						cell.setAttribute("onclick","allClear()");
 				}
-			};
+			}
 //		})();
 	}
 
@@ -144,7 +143,7 @@
 			var min=0,hr=0,day=0,wk=0,yr=0;
 			var d1 = new Date(find("ip1").value);
 			var d2 = new Date(find("ip2").value);
-			var diff = d2-d1
+			var diff = d2-d1;
 			min = diff/60000;
 			if(min>=60){
 				hr+=parseInt(min/60);
@@ -204,25 +203,26 @@
 			}
 			if(hr>12){
 				ampm="PM";
-				hr%=12
+				hr%=12;
 			}
 			find("next").innerHTML=mn+" / "+dy+" / "+yr+", "+hr+" : "+min+" "+ampm;
 		}
 		content.innerHTML = "";
+
 		var switcher = ["Date/Time Difference","Date/Time Interval"];
 		for (let i = 1; i < 3; i++) {
 			create("input",content,{id:"b"+i, type:"button", value:switcher[i-1]}, {margin:"20px"},{"click": function(){change(i);}});
-		};
+		}
 		create("div",content,{id:"date"},{margin:"100px"});
 		var lab = ["From","To"];
 		var labs = ["Days","Hours","Minutes"];
-		for (var i = 1; i < 3; i++) {
+		for (i = 1; i < 3; i++) {
 			create("div",date,{id:"dv"+i},{visibility:"hidden"});
-		};
-		for (var i = 1; i < 3; i++) {
+		}
+		for (i = 1; i < 3; i++) {
 			create("label",dv1,{innerHTML:lab[i-1]});
 			create("input",dv1,{id:"ip"+i, type:"datetime-local"});
-		};
+		}
 		create("label",dv1,{id:"result", innerHTML:"Difference"});
 		create("button",dv1,{innerHTML:"Find Difference"}, {margin:"20px"},{"click":diff});
 		create("label",dv2,{innerHTML:"Date-Time"});
@@ -284,6 +284,7 @@
 				find("ip3").value = find(id).value;
 		}
 		content.innerHTML = "";
+		var cell,ip;
 		create("div",content,{id:"emi"});
 		var t = create("table",emi);
 		var labels = ["Amount(in INR):","Rate of Interest(Yearly):","","Time period(Months):","","EMI(in INR):"];
@@ -291,24 +292,24 @@
 			var row = t.insertRow(i);
 			if(i%2!==0 || i===0){
 				for (var j = 0; j < 2; j++) {
-					var cell = row.insertCell(j);
+					cell = row.insertCell(j);
 					if(j===0){
 						cell.innerHTML = labels[i];
 					}
 					else{
-						var ip = create("input",cell,{id:"ip"+i, type:"number", min:"0", value:"0"},{width:"70px"},{"keydown":isNum});
+						ip = create("input",cell,{id:"ip"+i, type:"number", min:"0", value:"0"},{width:"70px"},{"keydown":isNum});
 					}
 				}
 			}
 			else{
-				var cell = row.insertCell(0);
+				cell = row.insertCell(0);
 				cell.setAttribute("colspan","2");
-				var ip = create("input",cell,{id:"sl"+i});
+				ip = create("input",cell,{id:"sl"+i});
 				ip.style.width = "auto";
 				cell.appendChild(ip);
 				if(i!==6){	
 					ip.type = "range";
-					ip.addEventListener("click",function(){reflect(this.id)});
+					ip.addEventListener("click",function(){reflect(this.id);});
 				}
 				else{
 					ip.id = "btn";
@@ -317,7 +318,7 @@
 					ip.addEventListener("click",calculate);
 				}
 			}
-		};
+		}
 		ip1.step = "0.01";
 		ip1.min = "8.00";
 		ip1.max = "16.00";

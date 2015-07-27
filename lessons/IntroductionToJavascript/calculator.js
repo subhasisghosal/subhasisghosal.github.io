@@ -8,7 +8,7 @@ function putValue(val){
 }
 
 function allClear(v){
-	op.value = (v==0) ? "" : op.value.slice(0,-v);
+	op.value = (v===0) ? "" : op.value.slice(0,-v);
 }
 
 function evalue(){

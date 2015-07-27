@@ -4,7 +4,7 @@ function getRandNum() {
 		var n = Math.floor(Math.random()*100);
 		if(n>9)
 			numbers.push(n);	
-	};
+	}
 	return numbers;
 }
 
@@ -15,7 +15,7 @@ function sort(arr) {
 			arr[i] = arr[i+1] - arr[i];
 			arr[i+1] = arr[i+1] - arr[i];
 		}
-	};
+	}
 	return arr;
 }
 
@@ -29,9 +29,9 @@ function subtractions(){
 		sum+="<div class='sum' id='d"+i+"'>";
 		sum+="<div>"+sortedList[j]+"</div>";
 		sum+="<div>-"+sortedList[j+1]+"</div>";
-		sum+="<div class='answer'><input id='"+i+"' type='text' onkeypress='return isNum(event)' onkeyup='validate(this.id)'/></div></div>"
+		sum+="<div class='answer'><input id='"+i+"' type='text' onkeypress='return isNum(event)' onkeyup='validate(this.id)'/></div></div>";
 		ans.push(parseInt(sortedList[j])-parseInt(sortedList[j+1]));
-	};
+	}
 	document.getElementById("content").innerHTML = sum;
 }
 
@@ -43,9 +43,9 @@ function additions(){
 		sum+="<div class='sum' id='d"+i+"'>";
 		sum+="<div>"+list[j]+"</div>";
 		sum+="<div>+"+list[j+1]+"</div>";
-		sum+="<div class='answer'><input id='"+i+"' type='text' onkeypress='return isNum(event)' onkeyup='validate(this.id)'/></div></div>"
+		sum+="<div class='answer'><input id='"+i+"' type='text' onkeypress='return isNum(event)' onkeyup='validate(this.id)'/></div></div>";
 		ans.push(parseInt(list[j])+parseInt(list[j+1]));
-	};
+	}
 	document.getElementById("content").innerHTML = sum;
 }
 

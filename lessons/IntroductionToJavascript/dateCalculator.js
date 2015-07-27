@@ -13,7 +13,7 @@ function diff(){
 	var min=0,hr=0,day=0,wk=0,yr=0;
 	var d1 = new Date(document.getElementById("start").value);
 	var d2 = new Date(document.getElementById("end").value);
-	var diff = d2-d1
+	var diff = d2-d1;
 	min = diff/60000;
 	if(min>=60){
 		hr+=parseInt(min/60);
@@ -67,7 +67,7 @@ function inter(){
 	}
 	if(hr>12){
 		ampm="PM";
-		hr%=12
+		hr%=12;
 	}
 	document.getElementById("next").innerHTML=mn+" / "+dy+" / "+yr+", "+hr+" : 00 "+ampm;
 }
