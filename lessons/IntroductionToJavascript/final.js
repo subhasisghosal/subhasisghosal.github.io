@@ -1,4 +1,5 @@
 (function (){
+	'use strict'
 	function find(id){
 		return document.getElementById(id);
 	}
@@ -130,12 +131,10 @@
 		//Function to Switch
 		function change(i){
 			if(i==1){
-				alert("div 1 selected");
 				dv1.style.visibility="visible";
 				dv2.style.visibility="hidden";
 			}
 			else{
-				alert("div 2 selected");
 				dv1.style.visibility="hidden";
 				dv2.style.visibility="visible";
 			}
@@ -211,12 +210,9 @@
 		}
 		content.innerHTML = "";
 		var switcher = ["Date/Time Difference","Date/Time Interval"];
-		for (var i = 1; i < 3; i++) {
+		for (let i = 1; i < 3; i++) {
 			create("input",content,{id:"b"+i, type:"button", value:switcher[i-1]},{},{"click": function(){change(i);}});
 		};
-		//b1.addEventListener("click",change(),true);
-		//b1.setAttribute("onclick", "change(1)");
-		//b2.setAttribute("onclick", "change(2)");
 		create("div",content,{id:"date"},{margin:"100px"});
 		var lab = ["From","To"];
 		var labs = ["Days","Hours","Minutes"];
