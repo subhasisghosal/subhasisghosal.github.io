@@ -211,7 +211,7 @@
 		content.innerHTML = "";
 		var switcher = ["Date/Time Difference","Date/Time Interval"];
 		for (let i = 1; i < 3; i++) {
-			create("input",content,{id:"b"+i, type:"button", value:switcher[i-1]},{},{"click": function(){change(i);}});
+			create("input",content,{id:"b"+i, type:"button", value:switcher[i-1]}, {margin:"20px"},{"click": function(){change(i);}});
 		};
 		create("div",content,{id:"date"},{margin:"100px"});
 		var lab = ["From","To"];
@@ -224,15 +224,17 @@
 			create("input",dv1,{id:"ip"+i, type:"datetime-local"});
 		};
 		create("label",dv1,{id:"result", innerHTML:"Difference"});
-		create("button",dv1,{innerHTML:"Find Difference"},{},{"click":diff});
+		create("button",dv1,{innerHTML:"Find Difference"}, {margin:"20px"},{"click":diff});
 		create("label",dv2,{innerHTML:"Date-Time"});
 		create("input",dv2,{id:"dt", type:"datetime-local"});
 		for (var i = 1; i < 4; i++) {
 			create("label",dv2,{innerHTML:labs[i-1]});
-			create("input",dv2,{id:"i"+i, type:"number", min:"0", value:"0"});
+			create("input",dv2,{id:"i"+i, type:"number", min:"0", value:"0"},{width:"40px"});
 		};
+		i2.max = "23";
+		i3.max = "59";
 		create("label",dv2,{id:"next", innerHTML:"Date/Time"});
-		create("button",dv2,{innerHTML:"Find Date/Time"},{},{"click":inter});
+		create("button",dv2,{innerHTML:"Find Date/Time"}, {margin:"20px"},{"click":inter});
 		
 	}
 
@@ -242,14 +244,36 @@
 			if(key>31 && (key<48 || key>57))
 				return false;
 		}
+		var p, r, n, e;
+		function calculateEMI(){
+			p = parseInt(find("ip0").value);
+			n = parseInt(find("ip3").value);
+			r = find("ip1").value/1200;
+			e = (p*r)/(1-Math.pow((1+r),-n));
+			find("ip5").value = Math.round(e);
+		}
+		function calculatePrincipal(){
+			e = parseInt(find("ip5").value);
+			n = parseInt(find("ip3").value);
+			r = find("ip1").value/1200;
+			p = (e*(1-Math.pow((1+r),-n)))/r;
+			find("ip0").value = Math.round(p);
+		}
+		function calculateTime(){
+			p = parseInt(find("ip0").value);
+			e = parseInt(find("ip5").value);
+			r = find("ip1").value/1200;
+			n = (Math.log(e)-Math.log(e-p*r))/Math.log(1+r);
+			find("ip3").value = Math.round(n);
+		}
 		function calculate(){
-			if (find("amt").value==="") {
+			if (find("ip0").value==="") {
 				calculatePrincipal();
 			}
-			else if (find("mnth").value==="") {
+			else if (find("ip3").value==="") {
 				calculateTime();
 			}
-			else if (find("emi").value==="") {
+			else if (find("ip5").value==="") {
 				calculateEMI();
 			}
 		}
@@ -263,7 +287,7 @@
 		create("div",content,{id:"emi"});
 		var t = create("table",emi);
 		var labels = ["Amount(in INR):","Rate of Interest(Yearly):","","Time period(Months):","","EMI(in INR):"];
-		for (var i = 0; i < 7; i++) {
+		for (let i = 0; i < 7; i++) {
 			var row = t.insertRow(i);
 			if(i%2!==0 || i===0){
 				for (var j = 0; j < 2; j++) {
@@ -272,8 +296,7 @@
 						cell.innerHTML = labels[i];
 					}
 					else{
-						var ip = create("input",cell,{id:"ip"+i, type:"number"},{},{keypress:"isNum"});
-						ip.setAttribute("onclick","return isNum()");
+						var ip = create("input",cell,{id:"ip"+i, type:"number", min:"0", value:"0"},{width:"70px"},{"keydown":isNum});
 					}
 				}
 			}
@@ -285,16 +308,20 @@
 				cell.appendChild(ip);
 				if(i!==6){	
 					ip.type = "range";
-					ip.setAttribute("onchange","reflect(this.id)");
+					ip.addEventListener("click",function(){reflect(this.id)});
 				}
 				else{
 					ip.id = "btn";
 					ip.type = "button";
 					ip.value = "Calculate";
-					ip.setAttribute("onclick","calculate()");
+					ip.addEventListener("click",calculate);
 				}
 			}
 		};
+		ip1.step = "0.01";
+		ip1.min = "8.00";
+		ip1.max = "16.00";
+		ip3.min = "12";
+		ip3.max = "240";
 	}
-	//document.body.innerHTML += '<script type="text/javascript" src="final.js"></script>';
 })();
