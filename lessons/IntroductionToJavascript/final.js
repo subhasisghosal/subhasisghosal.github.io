@@ -31,11 +31,6 @@
 		};
 		create("div",document.body,{"id":"content"});
 	})();
-	
-	function calculateBasic(){
-		
-
-	}
 
 	function basicCalculator(){
 		var op = document.getElementById("screen");
@@ -132,23 +127,117 @@
 	}
 
 	function dateCalculator(){
+		//Function to Switch
+		function change(i){
+			if(i==1){
+				alert("div 1 selected");
+				dv1.style.visibility="visible";
+				dv2.style.visibility="hidden";
+			}
+			else{
+				alert("div 2 selected");
+				dv1.style.visibility="hidden";
+				dv2.style.visibility="visible";
+			}
+		}
+		//Function to Find Difference
+		function diff(){
+			var min=0,hr=0,day=0,wk=0,yr=0;
+			var d1 = new Date(find("ip1").value);
+			var d2 = new Date(find("ip2").value);
+			var diff = d2-d1
+			min = diff/60000;
+			if(min>=60){
+				hr+=parseInt(min/60);
+				min%=60;
+			}
+			if(hr>=24){
+				day+=parseInt(hr/24);
+				hr%=24;
+			}
+			if(day>=7){
+				wk+=parseInt(day/7);
+				day%=7;
+			}
+			if(wk>=52){
+				yr+=parseInt(wk/52);
+				wk%=52;
+			}
+			find("result").innerHTML=yr+" Years, "+wk+" Weeks, "+day+" Days, "+hr+" Hours, "+min+" Minutes ";
+		}
+		//Function to Find Next date 
+		function inter(){
+			var d = new Date(find("dt").value);
+			var limit,ampm="AM";
+			var dt = find("dt").value;
+			var yr = parseInt(dt.slice(0,4));
+			var mn = parseInt(dt.slice(5,7));
+			var dy = parseInt(dt.slice(8,10));
+			var hr = parseInt(dt.slice(11,13));
+			var min = parseInt(dt.slice(14,16));
+			if(mn===2)
+				limit=28;
+			else if (mn===4||mn===6||mn===9||mn===11) 
+				limit=30;
+			else
+				limit=31;
+			var day = parseInt(find("i1").value);
+			var hour = parseInt(find("i2").value);
+			var minute = parseInt(find("i3").value);
+			min+=minute;
+			hr+=hour;
+			dy+=day;
+			if(min>=60){
+				hr+=parseInt(min/60);
+				min%=60;
+			}
+			if(hr>=24){
+				dy+=parseInt(hr/24);
+				hr%=24;
+			}
+			if(dy>=limit){
+				mn+=parseInt(dy/limit);
+				dy%=limit;
+			}
+			if(mn>12){
+				yr++;
+				mn%=12;
+			}
+			if(hr>12){
+				ampm="PM";
+				hr%=12
+			}
+			find("next").innerHTML=mn+" / "+dy+" / "+yr+", "+hr+" : "+min+" "+ampm;
+		}
 		content.innerHTML = "";
 		var switcher = ["Date/Time Difference","Date/Time Interval"];
 		for (var i = 1; i < 3; i++) {
-			create("input",content,{id:"b"+i, type:"button", value:switcher[i-1]},{},{"click": function(){}});
+			create("input",content,{id:"b"+i, type:"button", value:switcher[i-1]},{},{"click": function(){change(i);}});
 		};
 		//b1.addEventListener("click",change(),true);
-		//b1.setAttribute("onclick", "change()");
-		create("div",content,{id:"date"});
-
+		//b1.setAttribute("onclick", "change(1)");
+		//b2.setAttribute("onclick", "change(2)");
+		create("div",content,{id:"date"},{margin:"100px"});
+		var lab = ["From","To"];
+		var labs = ["Days","Hours","Minutes"];
 		for (var i = 1; i < 3; i++) {
-			create("div",date,{id:"dv"+i});
+			create("div",date,{id:"dv"+i},{visibility:"hidden"});
 		};
 		for (var i = 1; i < 3; i++) {
-			create("label",dv1);
-			create("input",dv1,{type:"datetime-local"});
+			create("label",dv1,{innerHTML:lab[i-1]});
+			create("input",dv1,{id:"ip"+i, type:"datetime-local"});
 		};
-
+		create("label",dv1,{id:"result", innerHTML:"Difference"});
+		create("button",dv1,{innerHTML:"Find Difference"},{},{"click":diff});
+		create("label",dv2,{innerHTML:"Date-Time"});
+		create("input",dv2,{id:"dt", type:"datetime-local"});
+		for (var i = 1; i < 4; i++) {
+			create("label",dv2,{innerHTML:labs[i-1]});
+			create("input",dv2,{id:"i"+i, type:"number", min:"0", value:"0"});
+		};
+		create("label",dv2,{id:"next", innerHTML:"Date/Time"});
+		create("button",dv2,{innerHTML:"Find Date/Time"},{},{"click":inter});
+		
 	}
 
 	function emiCalculator(){
