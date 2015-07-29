@@ -46,7 +46,7 @@ function submit(){
 		country: find('country').value,
 		sex: s,
 		interest: arr
-	}
+	};
 	console.log(JSON.stringify(details));
 }
 
@@ -84,16 +84,17 @@ function selectState(val){
 		case "japan": state = ["Hokkaido","Honshu","Kyoto"];
 			break;
 	}
-	//var list = find("state");
-	//while (list.hasChildNodes()) {   
-	//    list.removeChild(list.firstChild);	
+	var select = find("state");
+	while (select.hasChildNodes()) {   
+		select.removeChild(select.firstChild);}	
 	for (var i = 0; i < state.length; i++) {
 		var option = document.createElement("option");
 		option.value = state[i];
 		option.label = state[i];
-		var select = find("state");
+		option.innerHTML = state[i];
+		//var select = find("state");
 		select.appendChild(option);
-	};
+	}
 }
 
 function validatePh(val){

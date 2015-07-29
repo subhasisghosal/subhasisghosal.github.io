@@ -1,0 +1,145 @@
+
+body {
+	margin:0px;
+	padding:0px;
+	font-family: sans-serif;
+}
+h2 {
+	font-size: 22px;
+	color: #757575;
+}
+p { 
+	font-size: 13.81px;
+	color: #6e6e6e;
+	text-align: justify;
+	line-height: 1.5;
+	letter-spacing: 2pt;
+}
+textarea {
+	resize: none;
+}
+#header li {
+	display: inline;
+	border: solid;
+	border-width: 1px 1px 0 1px;
+	margin: 0 0.5em 0 0;
+}
+
+#right {
+	float: right;
+}
+
+#left {
+	float: left;
+}
+
+#country, #state {
+	width: 180px;
+}
+
+.btn {
+	background-color: #56a200;
+	height: 30px;
+	width: 100px;
+	padding: 1%;
+	left: 21%;
+	border-radius: 2px;
+	color: white;
+	font-family: sans-serif;
+	font-size: 12px;
+	font-style: bold;
+	text-align: center;
+	cursor:pointer;
+	margin: 10px 10px 10px 10px;
+}
+
+#tab2 {
+	display: none;
+}
+
+.textformat {
+	color: #717171;
+}
+.blue {
+	color: #1b6bce;
+}
+.box {
+	/*display: inline-block;*/
+	padding: 2%;
+	background-color: white;
+	border-radius: 8px;
+	border: 2px solid #C1D4E6;
+	/*width: 40%;*/
+	overflow: auto;
+}
+.matter {
+	position: absolute;
+	right: 10%;
+	left: 10%;
+	background-color: #e4efff;
+	overflow: auto;
+	width: 924.7px;
+	height: 320px;
+	margin-top: 10%;
+}
+
+.tab{
+	width:100px;
+	background:#FFFFFF;
+	font-size:14px;
+	font-style: bold;
+	padding:5px;
+	float:left;
+	border:1px solid #bdcdee;
+	cursor:pointer;
+	margin-right:4px;
+	border-radius:3px;
+	text-align: center;
+	margin-top: 8%;
+	/*z-index: -1;*/
+}
+.left{
+	margin-left:12%;
+}
+.current{
+	background: #e4efff;
+	color: #09569d;
+	border-color: #bdcdee;
+}
+
+img {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+#subscribe {
+	left: 63%;
+	right: 21%;
+}
+
+.overlay {
+     visibility: hidden;
+     position: absolute;
+     left: 0px;
+     top: 0px;
+     width:100%;
+     height:100%;
+     text-align:center;
+     z-index: 1000;
+}
+
+.overlay div {
+	float: left;
+     width:300px;
+     margin: 100px auto;
+     background-color: #fff;
+     border:1px solid #000;
+     padding:15px;
+     text-align:center;
+     left:50%;
+     top:50%;
+}
+
+.error {
+    color: #FF0000;
+}
