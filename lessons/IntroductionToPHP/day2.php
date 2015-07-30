@@ -6,7 +6,7 @@
 	<title>Latest News</title>
 </head>
 <body>
-	<?php include 'submit.php'?>
+	<?php include 'submit1.php'?>
 	<div class="tab_area">
 		<div class="textformat tab left current" id="tab_1" onclick="clickMe(this.id)">News</div>
         <div class="textformat tab" id="tab_2" onclick="clickMe(this.id)">Subscribe</div>

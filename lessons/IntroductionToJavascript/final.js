@@ -297,7 +297,7 @@
 						cell.innerHTML = labels[i];
 					}
 					else{
-						ip = create("input",cell,{id:"ip"+i, type:"number", min:"0", value:"0"},{width:"70px"},{"keydown":isNum});
+						ip = create("input",cell,{id:"ip"+i, type:"number", min:"0"},{width:"70px"},{"keydown":isNum});
 					}
 				}
 			}
@@ -322,7 +322,12 @@
 		ip1.step = "0.01";
 		ip1.min = "8.00";
 		ip1.max = "16.00";
+		sl2.step = "0.01";
+		sl2.min = "8.00";
+		sl2.max = "16.00";
 		ip3.min = "12";
 		ip3.max = "240";
+		sl4.min = "12";
+		sl4.max = "240";
 	}
 })();
