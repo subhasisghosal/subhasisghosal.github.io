@@ -1,5 +1,5 @@
 (function (){
-	'use strict'
+	'use strict';
 	function find(id){
 		return document.getElementById(id);
 	}
@@ -102,9 +102,9 @@
 			var head = t.insertRow(0).insertCell(0);
 			head.setAttribute("colspan","6");
 			create("input",head,{id:"screen",type:"text",disabled:"disabled"},{height:"inherit", width:"auto", "text-align":"right", "font-size":"24px"});
-			for (let i = 1; i < 5; i++) {
+			for (var i = 1; i < 5; i++) {
 				var row = t.insertRow(i);
-				for (let j = 0; j < 6; j++) {
+				for (var j = 0; j < 6; j++) {
 					var cell = row.insertCell(j);
 					cell.innerHTML = buttons[i-1][j];
 					cell.align = "center";
@@ -116,7 +116,7 @@
 					cell.style.font = "20px";
 					if(j<4)
 						//cell.setAttribute("onclick","putValue('"+buttons[i-1][j]+"')");
-						cell.addEventListener("onclick", function(){putValue(buttons[i-1][j]);});
+						cell.addEventListener("onclick", (function(a){ return putValue(a);})(buttons[i-1][j]));
 					else if(j>3 && i>2)
 						cell.setAttribute("onclick","mem()");
 					else if(j>3 && i===2)
