@@ -37,6 +37,7 @@
 		var op = find("screen");
 		var memory=0;
 		function putValue(val){
+			var op = find("screen");
 			op.selectionStart = op.selectionEnd = 0;
 			op.value += val;
 		}

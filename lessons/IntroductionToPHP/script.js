@@ -54,24 +54,6 @@ function clearform(){
 	find('sub_form').reset();
 }	
 
-function overlay(id) {
-	switch(id){
-		case "football": el = find("overlay1");
-			break;
-		case "movie": el = find("overlay2");
-			break;
-		case "reading": el = find("overlay3");
-			break;
-	}
-	el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
-}
-
-function back() {
-	document.getElementById("overlay1").style.visibility = "hidden";
-	document.getElementById("overlay2").style.visibility = "hidden";
-	document.getElementById("overlay3").style.visibility = "hidden";
-}
-
 function selectState(val){
 	var state;
 	switch(val){
@@ -92,22 +74,12 @@ function selectState(val){
 		option.value = state[i];
 		option.label = state[i];
 		option.innerHTML = state[i];
-		//var select = find("state");
 		select.appendChild(option);
 	}
 }
 
 function validatePh(val){
-	//alert(typeof(parseInt(val))+" "+parseInt(val));
-	//if(typeof(val)!=='number')
-	//	alert(val);
 	var digit = parseInt(val.slice(val.length-1));
 	if(isNaN(digit))
 		alert("Please enter digits");
-}
-
-function validPh(n){
-	var format = /^\((?([7-9]{1})?([0-9]{9}))$/;
-	if(!n.match(format))
-		alert("wrong");
 }
