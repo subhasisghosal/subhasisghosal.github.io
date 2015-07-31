@@ -1,8 +1,9 @@
 <?php
 	$name = $email = $phone = $sex = $country = $state = $address = $int = "";
-	$nameErr = $emailErr = $phoneErr = $sexErr = $countryErr = $stateErr = $interestErr = $addressErr = "";
+	$sexErr = $interestErr = "";
 	$interest = array();
 	$flag = false;
+	//Checking if a POST request is received
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$flag = true;
 		$name = $_POST["name"];
@@ -25,8 +26,9 @@
 	  }
 	  
 	}
-	
+	// If all data are correct, store the record in database
 	if($flag==true){
+		// Connecting Database
 		$conn = mysqli_connect('127.0.0.1', 'root', 'root', 'subscription',"3306");
 		if(! $conn ){
 		  die('Could not connect: ' . mysqli_error($conn));

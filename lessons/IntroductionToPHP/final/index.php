@@ -87,7 +87,7 @@
 	        				</tr>
 	        				<tr>
 	        					<td><span id="state1" class="error">* </span>State</td>
-	        					<td><select id="state" name="state">
+	        					<td><select id="state" name="state" onblur="validate(this.name, this.value)">
 		        					<option value="<?php echo htmlspecialchars($state);?>"><?php echo htmlspecialchars($state);?></option>
 		        				</select></td>
 	        				</tr>

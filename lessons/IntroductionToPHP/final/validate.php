@@ -1,4 +1,5 @@
 <?php
+	// Getting values from request
 	$value = $_GET['query'];
 	$formfield = $_GET['field'];
 	// Check Missing and Valid or Invalid name when user enters a name in name input field.

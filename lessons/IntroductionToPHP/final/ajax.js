@@ -1,6 +1,7 @@
 function find(id){
 	return document.getElementById(id);
 }
+//Total form checking after validation
 function checkForm(){
 	var name = find("name").value;
 	var email = find("email").value;
@@ -8,6 +9,7 @@ function checkForm(){
 	var country = find("country").value;
 	var state = find("state").value;
 	var address = find("address").value;
+	//Check All values are Filled or Not.
 	if(name==='' || email==='' || phone==='' || country==='' || state==='' || address===''){
 		alert("Please fill up ALL Fields");
 	}
@@ -27,21 +29,17 @@ function checkForm(){
 		}
 	}
 }
+//Individual elements are checked dynamically through AJAX
 function validate(field, query){
-	console.log("Validating",field,query);
 	var xmlhttp;
 	if (window.XMLHttpRequest) { // for IE7+, Firefox, Chrome, Opera, Safari
 		xmlhttp = new XMLHttpRequest();
-		console.log("HTTP request");
 	} else { // for IE6, IE5
 		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 	}
 	xmlhttp.onreadystatechange = function() {
-		console.log("State Change");
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			console.log("Entering..");
 			find(field+"1").innerHTML = xmlhttp.responseText;
-			// alert(JSON.stringify(xmlhttp.responseText));
 		} 
 	};
 	xmlhttp.open("GET", "validate.php?field=" + field + "&query=" + query);
