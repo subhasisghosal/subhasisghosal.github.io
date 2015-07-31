@@ -3,10 +3,11 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="ajaxscript.js">	</script>
 	<title>Latest News</title>
 </head>
 <body>
-	<?php include 'submit2.php'?>
+	<?php include 'submit.php'?>
 	<div class="tab_area">
 		<div class="textformat tab left current" id="tab_1" onclick="clickMe(this.id)">News</div>
         <div class="textformat tab" id="tab_2" onclick="clickMe(this.id)">Subscribe</div>
@@ -28,22 +29,22 @@
         
         <div id="tab2" class="tab_content matter box">
         	<div class="box">	
-        		<form id='sub_form' action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+        		<form id='sub_form' action="#" method="post">
         		<div>
         			<span id="left">
         				<h2 class="textformat">Subscription Form</h2>
         				<table>
         					<tr>
         						<td>Name</td>
-        						<td><input id="name" type="text" name="name" value="<?php echo htmlspecialchars($name);?>"/><span class="error">* <?php echo $nameErr;?></span></td>
+        						<td><input id="name" type="text" name="name" value="<?php echo htmlspecialchars($name);?>" onblur="validate(this.name, this.value)"/><span id="name1" class="error">* <?php echo $nameErr;?></span></td>
         					</tr>
 	        				<tr>
 	        					<td>Email</td>
-	        					<td><input id="email" type="text" name="email" value="<?php echo htmlspecialchars($email);?>"/><span class="error">* <?php echo $emailErr;?></span></td>
+	        					<td><input id="email" type="text" name="email" value="<?php echo htmlspecialchars($email);?>" onblur="validate(this.name, this.value)"/><span id="email1" class="error">* <?php echo $emailErr;?></span></td>
 	        				</tr>
 	        				<tr>
 	        					<td>Phone</td>
-	        					<td><input id="phone" type="text" name="phone" value="<?php echo htmlspecialchars($phone);?>" onkeyup="validatePh(this.value)"/><span class="error">* <?php echo $phoneErr;?></span></td>
+	        					<td><input id="phone" type="text" name="phone" value="<?php echo htmlspecialchars($phone);?>" onkeyup="validatePh(this.value)" onblur="validate(this.name, this.value)"/><span id="phone1" class="error">* <?php echo $phoneErr;?></span></td>
 	        				</tr>
 	        				<tr>
 	        					<td>Sex</td>
@@ -87,7 +88,7 @@
 	        				<tr>
 	        					<td>State</td>
 	        					<td><select id="state" name="state">
-		        					<option></option>
+		        					<option value="<?php echo htmlspecialchars($state);?>"><?php echo htmlspecialchars($state);?></option>
 		        				</select></td>
 	        				</tr>
 	        				<tr>
@@ -97,14 +98,14 @@
         				</table>
         			</span>
         		</div>
-        		<input type="submit" name="sub" class="btn">
+        		<input type="submit" name="sub" class="btn" onclick="checkForm()">
         		<input type="reset" class="btn" onclick="clearform()">
         		</form>
         	</div>
-        	<a href="http://subhasis.localhost/show.php">Show All Data</a>
         </div>        
     </div>
     <script type="text/javascript" src="script.js"></script>
+    
     <?php
     	if(isset($_POST["sub"])){
 			echo "<script type='text/javascript'>clickMe('tab_2');</script>";
