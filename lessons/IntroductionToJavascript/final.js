@@ -34,7 +34,7 @@
 	})();
 
 	function basicCalculator(){
-		var op = find("screen");
+		// var op = find("screen");
 		var memory=0;
 		function putValue(val){
 			var op = find("screen");
@@ -103,6 +103,7 @@
 			var head = t.insertRow(0).insertCell(0);
 			head.setAttribute("colspan","6");
 			create("input",head,{id:"screen",type:"text",disabled:"disabled"},{height:"inherit", width:"auto", "text-align":"right", "font-size":"24px"});
+			var memList = ['r','c','+','-'], k=0, c=1;
 			for (var i = 1; i < 5; i++) {
 				var row = t.insertRow(i);
 				for (var j = 0; j < 6; j++) {
@@ -116,14 +117,33 @@
 					cell.style.background = "#ffffec";
 					cell.style.font = "20px";
 					if(j<4)
-						//cell.setAttribute("onclick","putValue('"+buttons[i-1][j]+"')");
-						cell.addEventListener("onclick", (function(a){ return putValue(a);})(buttons[i-1][j]));
+						cell.addEventListener("click", (function(a){ 
+							return function(){
+								if(a=="mod")
+									putValue("%");
+								else
+									putValue(a);
+							};
+						})(buttons[i-1][j]));
 					else if(j>3 && i>2)
-						cell.setAttribute("onclick","mem()");
+						cell.addEventListener("click", (function(a){ 
+							return function(){
+								mem(a);
+							};
+						})(memList[k++]));
 					else if(j>3 && i===2)
-						cell.setAttribute("onclick","allClear()");
+						cell.addEventListener("click", (function(a){ 
+							return function(){
+								allClear(a);
+							};
+						})(c--));
+					else if(i===1 && j===4)
+						cell.addEventListener("click", percent);
+					else
+						cell.addEventListener("click", evalue);
 				}
 			}
+			var op = find("screen");
 //		})();
 	}
 
